@@ -2,7 +2,7 @@ package rock_paper_scissors_lizard_spock;
 
 import rock_paper_scissors_lizard_spock.HandType;
 
-public class Rock implements Move {
+public final class Rock implements Move {
 
 	@Override
 	public HandType move() {

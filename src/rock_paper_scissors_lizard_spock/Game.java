@@ -93,9 +93,12 @@ public class Game {
 			}
 				
 		} catch(IOException ioexc) {
-			System.err.println("Failed to read input");
+			System.out.println("Failed to read input - try again.");
+			return getMove(player);
+		} catch(NumberFormatException nfexc) {
+			System.out.println("You must enter a digit - try again.");
+			return getMove(player);
 		}
-		return null;
 	}
 	
 	/**

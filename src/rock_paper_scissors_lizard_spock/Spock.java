@@ -1,6 +1,6 @@
 package rock_paper_scissors_lizard_spock;
 
-public class Spock implements Move {
+public final class Spock implements Move {
 
 	@Override
 	public HandType move() {
