@@ -5,7 +5,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Game {
+	/**
+	 * @brief Game constructor.
+	 * @param max Maximum score which terminates the game.
+	 */
 	public Game(Integer max) {
+		// Enable console input in Eclipse.
 		br = new BufferedReader(new InputStreamReader(System.in));
 		
 		player1 = "";
@@ -15,6 +20,10 @@ public class Game {
 		maxScore = max;
 	}
 	
+	/**
+	 * @brief Initialize the game.
+	 * @throws IOException Unable to read a name.
+	 */
 	public void start() throws IOException {
         System.out.print("Enter player1:\n");
         player1 = br.readLine();
@@ -23,10 +32,16 @@ public class Game {
         player2 = br.readLine();
 	}
 	
-	public void play() throws IOException, RuntimeException {
+	/**
+	 * @brief Play a round.
+	 * @throws IOException Unable to read player input.
+	 */
+	public void play() throws IOException {
+		// Get players moves.
 		Move m1 = getMove(player1);
 		Move m2 = getMove(player2);
 		
+		// Determine winner of round.
 		if(m1.beats(m2.move())) {
 			score1++;
 			System.out.print(player1 + " wins!\n");
@@ -36,6 +51,7 @@ public class Game {
 			System.out.print(player2 + " wins!\n");
 		}
 		
+		// Test for end of game.
 		if(score1 >= maxScore) {
 			System.out.print(player1 + " IS THE WINNER");
 			return;
@@ -44,10 +60,18 @@ public class Game {
 			System.out.print(player2 + " IS THE WINNER");
 			return;
 		}
+		
+		// Start new round.
 		play();
 	}
 
-	private Move getMove(String player) throws IOException, RuntimeException {
+	/**
+	 * @brief Get the move a player wants to play.
+	 * @param player Name of the player.
+	 * @return The Move that was made.
+	 * @throws IOException Unable to read player input.
+	 */
+	private Move getMove(String player) throws IOException {
 		System.out.print(player + ", make a choice:\n");
 		printMoves();
 		try {
@@ -74,6 +98,9 @@ public class Game {
 		return null;
 	}
 	
+	/**
+	 * @brief Print the possible moves.
+	 */
 	private void printMoves() {
 		System.out.print("1. Rock\n"
 				+ "2. Paper\n"
