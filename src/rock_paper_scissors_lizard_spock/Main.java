@@ -13,6 +13,7 @@ public class Main {
 		try {
 			game.start();
 			game.play();
+			
 		} catch (IOException exc) {
 			System.out.println("Ah shit happens.");
 		}
